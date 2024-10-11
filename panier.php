@@ -28,11 +28,9 @@
 
 include_once "inc/constant.php";
 
-// Supprimer les produits du panier
 if (isset($_GET['del']) && is_numeric($_GET['del'])) {
-    $id_del = intval($_GET['del']); // Convertir en entier pour éviter les injections
+    $id_del = intval($_GET['del']);
 
-    // Vérifier si l'élément existe dans le panier avant de le supprimer
     if (isset($_SESSION['boutique'][$id_del])) {
         unset($_SESSION['boutique'][$id_del]);
     }
@@ -54,35 +52,26 @@ if (isset($_GET['del']) && is_numeric($_GET['del'])) {
             <?php
             $total = 0;
 
-            // Vérifier si le panier existe et s'il est un tableau
             if (isset($_SESSION['boutique']) && is_array($_SESSION['boutique'])) {
                 $ids = array_keys($_SESSION['boutique']);
 
-                // Vérifier si le panier est vide
                 if (empty($ids)) {
                     echo "<tr><td colspan='5'>Votre panier est vide</td></tr>";
                 } else {
-                    // Convertir les IDs en entiers pour éviter les injections
                     $productIds = implode(',', array_map('intval', $ids));
 
                     try {
-                        // Créer une connexion PDO
                         $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_pass);
 
 
-                        // Préparer la requête préparée pour récupérer les produits du panier depuis la base de données
                         $query = "SELECT id, name, price, img FROM panier WHERE id IN ($productIds)";
                         $stmt = $pdo->prepare($query);
 
-                        // Exécuter la requête préparée
                         $stmt->execute();
 
-                        // Récupérer les résultats
                         $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-                        // Parcourir les produits du panier
                         foreach ($products as $product){
-                            // Calculer le sous-total (prix unitaire * quantité) pour chaque produit
                             $subtotal = $product['price'] * $_SESSION['boutique'][$product['id']];
                             $total += $subtotal;
                             ?>
@@ -95,7 +84,6 @@ if (isset($_GET['del']) && is_numeric($_GET['del'])) {
                             </tr>
                         <?php };
 
-                        // Fermer la connexion PDO
                         $pdo = null;
                     } catch (PDOException $e) {
                         echo "Erreur : " . $e->getMessage();

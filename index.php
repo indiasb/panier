@@ -31,14 +31,11 @@
 
     <section class="products_list"> 
         <?php
-        // inclure la page de coonexion de la base de données 
         include_once("inc/constant.php");
 
         try{
-            // creation connexion PDO
             $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8", $db_user, $db_pass);
 
-            // préparation de la requette SQL sécurisée pour selectionner les produits
             $sql = "SELECT * FROM panier";
             $query = $pdo->prepare($sql);
             $query->execute();
@@ -63,7 +60,6 @@
         }catch(PDOException $err){
             echo"Erreur :".err->getMessage();
         }
-        // Fermeture de la base de données
         $pdo = null;
         ?>
         
