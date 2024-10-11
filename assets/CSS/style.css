@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.header {
+    background-color: rgba(31, 57, 203, 0.95);
+    text-transform: uppercase;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ul_header li {
+    text-align: center;
+}
+
+.ul_header i {
+    justify-content: center;
+    cursor: pointer;
+}
+
+h1 {
+    text-align: center;
+    margin: 10px;
+}
+
+.products_list {
+    /* Recettes */
+    margin: 100px auto;
+    position: relative;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(170px,1fr));
+    grid-gap: 25px;
+    height: 75%;
+}
+
+.product {
+    /* Recettes */
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.product:hover {
+    /* Recettes */
+    transform: scale(1.1);
+}
+
+.image_product {
+    /* Recettes */
+    height: 350px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image_product img {
+    /* Recettes */
+    height: 130px;
+    width: 150px;
+}
+
+.content {
+    /* Recettes */
+    margin-top: 0px;
+    margin-bottom: 30px;
+    height: fit-content;
+    text-align: center;
+}
+
+.price {
+    /* Recettes */
+    margin: 15px 0;
+    font-weight: 400;
+    color: black;
+}
+
+.id_product {
+    /* Recettes */
+    text-align: center;
+    text-decoration: 0;
+    background-color: rgba(31, 57, 203, 0.95);
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px  10%;
+    border-radius: 6px;
+}
+
+.payment {
+    /* Panier */
+    background-color: rgba(31, 57, 203, 0.95);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    margin: 10px;
+}
+
+.panier img {
+    /*Panier*/
+    width: 100px;
+    height: 100px;
+    padding: 8px 0;
+}
+
+.panier section {
+    /*Panier*/
+    width: 70%;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+table {
+    /*Panier*/
+    width: 60%;
+    border-collapse: collapse;
+    margin-top: 30px;
+    margin-left: 10px; 
+}
+
+th,td {
+    /*Panier*/
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.table-content {
+    text-align: center;
+}
+
+td a {
+    color: #000;
+}
+
+
+@media screen and (min-width:600px) and (max-width:900px) {
+    
+    h1 {
+        font-size: 25px;
+    }
+
+    .icone_panier {
+        font-size: 40px;
+    }
+
+    .ul_header li {
+        font-size: 12px;
+
+    }
+
+    .ul_header i {
+        font-size: 25px;
+    }
+}
+
+
+@media screen and (min-width:300px) and (max-width:599px) {
+    
+    h1 {
+        font-size: 17px;
+    }
+
+    .icone_panier {
+        font-size: 35px;
+    }
+
+   .ul_header li {
+        font-size: 12px;
+    }
+
+    .ul_header i {
+        font-size: 20px;
+    }
+
+    .header .ul_header {
+        height: 120px;
+    }
+
+}
